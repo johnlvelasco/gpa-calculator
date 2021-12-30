@@ -10,10 +10,19 @@
     <Compile Update="DisplayStudentControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Customization\GPAControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ListSwapper.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="StudentCustomization.xaml.cs">
+    <Compile Update="Customization\StudentCustomization.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Customization\SemesterDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SemesterControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="StudentSelection.xaml.cs">
@@ -24,13 +33,22 @@
     <Page Update="DisplayStudentControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Customization\GPAControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="ListSwapper.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="StudentCustomization.xaml">
+    <Page Update="Customization\StudentCustomization.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Customization\SemesterDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SemesterControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="StudentSelection.xaml">

@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace GPACalculator
 {
     /// <summary>
-    /// Interaction logic for StudentCustomization.xaml
+    /// Interaction logic for SemesterDisplay.xaml
     /// </summary>
-    public partial class StudentCustomization : Window
+    public partial class SemesterDisplay : UserControl
     {
-        public StudentCustomization()
+        public SemesterDisplay()
         {
             InitializeComponent();
         }
