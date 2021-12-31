@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="GPACalculator.CourseControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GPACalculator"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="70"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel Orientation="Horizontal">
+        <TextBox x:Name="courseNameText" TextChanged="NameChangedEventHandler" Width="600"></TextBox>
+        <TextBox x:Name="courseCreditHoursText" TextChanged="CreditHoursChangedEventHandler" Width="250"></TextBox>
+        <TextBox x:Name="courseGradeText" TextChanged="GradeChangedEventHandler" Width="250"></TextBox>
+        <Button x:Name="deleteCourseButton" Click="DeleteCourseControl" Width="100" FontSize="60" Foreground="Red" Background="Transparent" FontWeight="Bold">X</Button>
+    </StackPanel>
+</UserControl>

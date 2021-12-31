@@ -21,3 +21,15 @@ C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\Data\obj\Debug
 C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\Data\obj\Debug\net5.0\Data.dll
 C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\Data\obj\Debug\net5.0\ref\Data.dll
 C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\Data\obj\Debug\net5.0\Data.pdb
+C:\Users\johnv\Source\Repos\gpa-calculator\Data\bin\Debug\net5.0\Data.deps.json
+C:\Users\johnv\Source\Repos\gpa-calculator\Data\bin\Debug\net5.0\Data.dll
+C:\Users\johnv\Source\Repos\gpa-calculator\Data\bin\Debug\net5.0\ref\Data.dll
+C:\Users\johnv\Source\Repos\gpa-calculator\Data\bin\Debug\net5.0\Data.pdb
+C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\Data.csproj.AssemblyReference.cache
+C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\Data.AssemblyInfoInputs.cache
+C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\Data.AssemblyInfo.cs
+C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\Data.csproj.CoreCompileInputs.cache
+C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\Data.dll
+C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\ref\Data.dll
+C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\Data.pdb

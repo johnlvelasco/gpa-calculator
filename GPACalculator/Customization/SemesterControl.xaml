@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="GPACalculator.SemesterControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GPACalculator"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1200">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value=".50"/>
+            </Style>
+        </Grid.Resources>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox FontSize="40" Text="Semester 1" Height="100" Width="300" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBox>
+        <Border Grid.Row="1">
+            <StackPanel  Orientation="Horizontal" x:Name="Labels" Background="LightGray">
+                <Border>
+                    <TextBlock Width="600">Name</TextBlock>    
+                </Border>
+                <Border>
+                    <TextBlock Width="250">Credit Hours</TextBlock>
+                </Border>
+                <Border>
+                    <TextBlock Width="250">Grade</TextBlock>
+                </Border>
+            </StackPanel>            
+        </Border>
+
+        <StackPanel Grid.Row="2" Name="CoursesStackPanel">
+            
+        </StackPanel>       
+    </Grid>
+
+</UserControl>

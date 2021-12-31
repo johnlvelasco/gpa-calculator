@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\
+C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\
 GPACalculator
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\GPACalculator\App.xaml
-8988568866
+C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\App.xaml
+9715904406
 
-12-1662340813
-194-1884709602
-Customization\GPAControl.xaml;Customization\SemesterDisplay.xaml;Customization\StudentCustomization.xaml;DisplayStudentControl.xaml;ListSwapper.xaml;MainWindow.xaml;SemesterControl.xaml;StudentSelection.xaml;
+13-1968392225
+194-920480050
+Customization\CourseControl.xaml;Customization\GPAControl.xaml;Customization\SemesterControl.xaml;Customization\SemesterDisplay.xaml;Customization\StudentCustomization.xaml;DisplayStudentControl.xaml;ListSwapper.xaml;MainWindow.xaml;StudentSelection.xaml;
 
 False
 

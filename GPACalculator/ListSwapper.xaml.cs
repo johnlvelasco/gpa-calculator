@@ -28,7 +28,27 @@ namespace GPACalculator
 
         public void AddNewStudent(object sender, RoutedEventArgs e)
         {
-            StudentCustomization studentCustomization = new StudentCustomization(); 
+            StudentCustomization studentCustomization = new StudentCustomization();
+            MainWindow main = TraverseTreeForMain;
+            main.MainWindowBorder.Child = studentCustomization; 
+
         }
+        /// <summary>
+        /// Traverses the tree to find the MainWindow parent. 
+        /// </summary>
+        private MainWindow TraverseTreeForMain
+        {
+            get
+            {
+                DependencyObject parent = this;
+                do
+                {
+                    parent = LogicalTreeHelper.GetParent(parent);
+                } while (!(parent is null || parent is MainWindow));
+                return parent as MainWindow;
+            }
+        }
+
+
     }
 }

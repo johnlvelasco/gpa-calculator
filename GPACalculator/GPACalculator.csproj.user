@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Customization\CourseControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DisplayStudentControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,7 +25,7 @@
     <Compile Update="Customization\SemesterDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="SemesterControl.xaml.cs">
+    <Compile Update="Customization\SemesterControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="StudentSelection.xaml.cs">
@@ -30,6 +33,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Customization\CourseControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="DisplayStudentControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -48,7 +54,7 @@
     <Page Update="Customization\SemesterDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SemesterControl.xaml">
+    <Page Update="Customization\SemesterControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="StudentSelection.xaml">
