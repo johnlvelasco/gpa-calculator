@@ -6,16 +6,12 @@
              xmlns:local="clr-namespace:GPACalculator"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1220">
-    <StackPanel>
-        <ListView>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <local:SemesterControl/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView> 
-        <Button Width="300" Height="100" FontSize="30">Add Semester</Button>   
-    </StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <StackPanel>
+            <StackPanel x:Name="SemesterStackPanel">
+
+            </StackPanel>
+            <Button x:Name="btnAddSemester" Click="AddSemester" Width="300" Height="100" FontSize="30">Add Semester</Button>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

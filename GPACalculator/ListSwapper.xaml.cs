@@ -23,12 +23,13 @@ namespace GPACalculator
     {
         public ListSwapper()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
         public void AddNewStudent(object sender, RoutedEventArgs e)
         {
             StudentCustomization studentCustomization = new StudentCustomization();
+            studentCustomization.DataContext = new Student(); 
             MainWindow main = TraverseTreeForMain;
             main.MainWindowBorder.Child = studentCustomization; 
 

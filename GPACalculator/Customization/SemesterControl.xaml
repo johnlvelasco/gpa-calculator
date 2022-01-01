@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GPACalculator"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="1200">
+             d:DesignHeight="600" d:DesignWidth="1200">
     <Grid>
         <Grid.Resources>
             <Style TargetType="TextBlock">
@@ -17,18 +17,23 @@
                 <Setter Property="BorderBrush" Value="Black"/>
                 <Setter Property="BorderThickness" Value=".50"/>
             </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="Width" Value="300"/>
+                <Setter Property="Height" Value="75"/>
+            </Style>
         </Grid.Resources>
-        
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox FontSize="40" Text="Semester 1" Height="100" Width="300" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBox>
+        <TextBox Name="SemesterLabel" FontSize="40" Text="Semester 1" Height="75" Width="300" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBox>
         <Border Grid.Row="1">
             <StackPanel  Orientation="Horizontal" x:Name="Labels" Background="LightGray">
                 <Border>
-                    <TextBlock Width="600">Name</TextBlock>    
+                    <TextBlock Width="600">Name</TextBlock>
                 </Border>
                 <Border>
                     <TextBlock Width="250">Credit Hours</TextBlock>
@@ -36,12 +41,14 @@
                 <Border>
                     <TextBlock Width="250">Grade</TextBlock>
                 </Border>
-            </StackPanel>            
+            </StackPanel>
         </Border>
 
         <StackPanel Grid.Row="2" Name="CoursesStackPanel">
-            
-        </StackPanel>       
+
+        </StackPanel>
+        <Button Grid.Row="0" HorizontalAlignment="Center" x:Name="AddCourseButton" Click="AddCourse" Height="76" Margin="0,12,0,0" VerticalAlignment="Top">Add Course</Button>
+
     </Grid>
 
 </UserControl>

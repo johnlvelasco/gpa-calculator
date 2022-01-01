@@ -53,7 +53,7 @@ namespace GPACalculator {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/GPACalculator_rsnu0tzf_wpftmp;component/studentselection.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/GPACalculator;component/studentselection.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\StudentSelection.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

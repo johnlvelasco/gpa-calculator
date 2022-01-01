@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Data;
 
 namespace GPACalculator
 {
@@ -22,6 +23,14 @@ namespace GPACalculator
         public StudentCustomization()
         {
             InitializeComponent();
+        }
+
+        private void CompleteStudent(object sender, RoutedEventArgs e)
+        {
+            Student student = DataContext as Student;
+            string[] firstlast = StudentNameTextBox.Text.Split();
+            student.FirstName = firstlast[0];
+            student.LastName = firstlast[1]; 
         }
     }
 }

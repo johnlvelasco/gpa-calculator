@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\GPACalculator",
+    "\\GPACalculator\\Customization"
   ],
-  "SelectedNode": "\\C:\\Users\\johnv\\Source\\Repos\\gpa-calculator",
+  "SelectedNode": "\\GPACalculator\\Customization\\SemesterControl.xaml.cs",
   "PreviewInSolutionExplorer": false
 }

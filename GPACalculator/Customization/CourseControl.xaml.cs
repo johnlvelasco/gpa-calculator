@@ -15,6 +15,20 @@ namespace GPACalculator
     /// </summary>
     public partial class CourseControl : UserControl, INotifyPropertyChanged
     {
+        private SemesterControl TraverseTreeForSemesterControl
+        {
+            get
+            {
+                DependencyObject parent = this;
+                do
+                {
+                    parent = LogicalTreeHelper.GetParent(parent); 
+                }
+                while (!(parent is SemesterControl || parent is null));
+                return parent as SemesterControl;
+            }
+        }
+
         /// <summary>
         /// Event that handles when a property is changed.
         /// </summary>
@@ -63,9 +77,15 @@ namespace GPACalculator
         public CourseControl(Course c)
         {
             InitializeComponent();
-            CourseName = c.CourseName; 
+            CourseName = c.CourseName;
+            courseNameText.Text = CourseName; 
+            
             CourseCreditHours = c.CreditHours.ToString();
+            if (CourseCreditHours.Equals("0")) courseCreditHoursText.Text = ""; 
+            else courseCreditHoursText.Text = CourseCreditHours; 
+            
             CourseGrade = c.LetterGrade.ToString();
+            courseGradeText.Text = CourseGrade; 
 
         }
         /// <summary>
@@ -130,6 +150,11 @@ namespace GPACalculator
         {
             //delete this course from control, so make a method inside of the semester control,
             //that deletes the requested course. 
+            SemesterControl semesterControl = TraverseTreeForSemesterControl;
+            CourseControl cc = sender as CourseControl;
+
+            semesterControl.RemoveCourse(cc); 
+
         }
     }
 }

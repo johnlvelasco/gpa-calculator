@@ -1,37 +1,85 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Data
 {
-    public class Student
+    public class Student : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged; 
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); 
+        }
         /// <summary>
         /// List containing all courses taken by a Student.
         /// SHOULD RESEARCH MORE ABOUT STRUCTURES FOR THIS.
         /// </summary>
         public List<Semester> SemestersTaken = new List<Semester>();
 
+        private double _gpa; 
+
         /// <summary>
         /// The Student's Cumulative GPA. 
         /// </summary>
-        public double GPA { get; set; }
+        public double GPA
+        {
+            get => _gpa; 
+            set
+            {
+                if (_gpa == value) return;
+                _gpa = value;
+                OnPropertyChanged(nameof(GPA)); 
+            }
+        }
 
+        private int _totalCreditsTaken; 
         /// <summary>
         /// Field to keep track of credits taken by the student in a semester. 
         /// </summary>
-        public int TotalCreditsTaken { get; set; }
+        public int TotalCreditsTaken
+        {
+            get => _totalCreditsTaken; 
+            set
+            {
+                if (_totalCreditsTaken == value) return;
+                _totalCreditsTaken = value;
+                OnPropertyChanged(nameof(TotalCreditsTaken)); 
+            }
+        }
 
+        private string _firstName;
         /// <summary>
         /// Gets the first name of the student.
         /// Is set within the constructor. 
         /// </summary>
-        public string FirstName { get; }
+        public string FirstName
+        {
+            get => _firstName;
+            set
+            {
+                if (_firstName == value) return;
+                _firstName = value;
+                OnPropertyChanged(nameof(FirstName)); 
+            }
+        }
 
+        private string _lastName; 
         /// <summary>
         /// Gets the last name of the student. 
         /// Is set within the constructor. 
         /// </summary>
-        public string LastName { get; }
+        public string LastName
+        {
+            get => _lastName; 
+            set
+            {
+                if (_lastName == value) return;
+                _lastName = value;
+                OnPropertyChanged(nameof(LastName)); 
+            }
+        }
 
         /// <summary>
         /// Returns the full name of the student, combining the first and last name. 
@@ -72,10 +120,9 @@ namespace Data
         /// </summary>
         /// <param name="first">the student's first name</param>
         /// <param name="last">the student's last name</param>
-        public Student(string first, string last)
+        public Student()
         {
-            FirstName = first;
-            LastName = last;
+
         }         
 
         /// <summary>
