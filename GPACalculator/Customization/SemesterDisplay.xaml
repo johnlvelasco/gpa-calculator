@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GPACalculator"
              mc:Ignorable="d" 
-             d:DesignHeight="1080" d:DesignWidth="1220">
+             d:DesignHeight="1080" d:DesignWidth="1200">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <StackPanel>
             <StackPanel x:Name="SemesterStackPanel">

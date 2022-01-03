@@ -30,7 +30,7 @@ namespace GPACalculator
         /// <summary>
         /// Collection of courses that are in the semester. 
         /// </summary>
-        public ObservableCollection<Course> Courses = new ObservableCollection<Course>();
+        public List<Course> Courses = new List<Course>();
 
         /// <summary>
         /// Button that handles when a user wants to add a new course to the semester. 
@@ -52,13 +52,13 @@ namespace GPACalculator
             CoursesStackPanel.Children.Add(new CourseControl(c));
         }
 
-        public bool RemoveCourse(CourseControl cc)
+        public bool RemoveCourse(Course courseToRemove)
         {
             foreach (Course course in Courses)
             {
-                if (course.CourseName.Equals(cc.CourseName) &&
-                    course.CreditHours.Equals(cc.CourseCreditHours) &&
-                    course.LetterGrade.Equals(cc.CourseGrade))
+                if (course.CourseName.Equals(courseToRemove.CourseName) &&
+                    course.CreditHours.Equals(courseToRemove.CreditHours) &&
+                    course.LetterGrade.Equals(courseToRemove.LetterGrade))
                 { 
                     Courses.Remove(course);
                     CoursesStackPanel.Children.Remove(new CourseControl(course));
@@ -68,6 +68,30 @@ namespace GPACalculator
             }
             return false;
         }
+
+        public void UpdateCourses()
+        {
+            List<Course> oldList = Courses;
+            List<Course> newList = new List<Course>(); 
+            foreach (CourseControl cc in CoursesStackPanel.Children)
+            {
+                foreach(Course course in oldList)
+                {
+                    if (cc.CourseName.Equals(course.CourseName) &&
+                        cc.CourseCreditHours.Equals(course.CreditHours.ToString()) &&
+                        cc.CourseGrade.Equals(course.LetterGrade.ToString()))
+                    {
+                        Course newCourse = new Course(cc.courseNameText.Text,
+                            cc.StringToCreditHours(cc.courseCreditHoursText.Text),
+                            cc.StringToGrade(cc.courseGradeComboBox.Text));
+                        newList.Add(newCourse);
+                        break;
+                    }
+                }
+            }
+            Courses = newList; 
+        }
+
 
     }
 }

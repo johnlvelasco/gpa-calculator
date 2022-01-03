@@ -8,14 +8,20 @@
              d:DesignHeight="100" d:DesignWidth="1200">
     <UserControl.Resources>
         <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="70"/>
+            <Setter Property="FontSize" Value="40"/>
             <Setter Property="TextAlignment" Value="Center"/>
         </Style>
     </UserControl.Resources>
     <StackPanel Orientation="Horizontal">
-        <TextBox x:Name="courseNameText" TextChanged="NameChangedEventHandler" Width="600"></TextBox>
-        <TextBox x:Name="courseCreditHoursText" TextChanged="CreditHoursChangedEventHandler" Width="250"></TextBox>
-        <TextBox x:Name="courseGradeText" TextChanged="GradeChangedEventHandler" Width="250"></TextBox>
-        <Button x:Name="deleteCourseButton" Click="DeleteCourseControl" Width="100" FontSize="60" Foreground="Red" Background="Transparent" FontWeight="Bold">X</Button>
+        <TextBox x:Name="courseNameText" TextChanged="NameChangedEventHandler" Width="600" TextAlignment="Center"></TextBox>
+        <TextBox x:Name="courseCreditHoursText" TextChanged="CreditHoursChangedEventHandler" TextAlignment="Center" Width="250"></TextBox>
+        <ComboBox x:Name="courseGradeComboBox" SelectionChanged="GradeChangedEventHandler" Width="250" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <ComboBoxItem Content="A"/>
+            <ComboBoxItem Content="B"/>
+            <ComboBoxItem Content="C"/>
+            <ComboBoxItem Content="D"/>
+            <ComboBoxItem Content="F"/>
+        </ComboBox>
+        <Button x:Name="deleteCourseButton" Click="DeleteCourseControl" Width="100" FontSize="60" Foreground="Red" Background="Transparent" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">X</Button>
     </StackPanel>
 </UserControl>

@@ -66,9 +66,9 @@ namespace GPACalculator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void GradeChangedEventHandler(object sender, TextChangedEventArgs args)
+        private void GradeChangedEventHandler(object sender, SelectionChangedEventArgs args)
         {
-            CourseGrade = courseGradeText.Text; 
+            CourseGrade = courseGradeComboBox.SelectedItem.ToString(); 
         }
 
         /// <summary>
@@ -77,21 +77,13 @@ namespace GPACalculator
         public CourseControl(Course c)
         {
             InitializeComponent();
-            CourseName = c.CourseName;
-            courseNameText.Text = CourseName; 
-            
-            CourseCreditHours = c.CreditHours.ToString();
-            if (CourseCreditHours.Equals("0")) courseCreditHoursText.Text = ""; 
-            else courseCreditHoursText.Text = CourseCreditHours; 
-            
-            CourseGrade = c.LetterGrade.ToString();
-            courseGradeText.Text = CourseGrade; 
-
+            if (c.CreditHours.Equals("0")) courseCreditHoursText.Text = ""; 
+            //else courseCreditHoursText.Text = c.CreditHours.ToString(); 
         }
         /// <summary>
         /// Private backing variable for the name of the Course
         /// </summary>
-        private string _courseName; 
+        private string _courseName = ""; 
         /// <summary>
         /// The name of the course, subject to change when user edits textbox. 
         /// </summary>
@@ -100,7 +92,7 @@ namespace GPACalculator
             get => _courseName; 
             set
             {
-                if (_courseName == value) return;
+                if (_courseName.Equals(value)) return;
                 _courseName = value;
                 OnPropertyChanged(nameof(CourseName));
             }
@@ -108,7 +100,7 @@ namespace GPACalculator
         /// <summary>
         /// Private backing variable for the Course's credit hours.
         /// </summary>
-        private string _courseCreditHours;
+        private string _courseCreditHours = "";
         /// <summary>
         /// The Credit Hours for the course. 
         /// Subject to change when user changes value. 
@@ -118,7 +110,7 @@ namespace GPACalculator
             get => _courseCreditHours;
             set
             {
-                if (_courseCreditHours == value) return;
+                if (_courseCreditHours.Equals(value)) return;
                 _courseCreditHours = value;
                 OnPropertyChanged(nameof(CourseCreditHours)); 
             }
@@ -126,21 +118,48 @@ namespace GPACalculator
         /// <summary>
         /// Private backing variable for the Course's Grade.
         /// </summary>
-        private string _courseGrade;
+        private string _courseGrade = "";
         /// <summary>
         /// The Grade for the course
         /// Subject to change when user changes value. 
         /// </summary>
         public string CourseGrade
         {
-            get => _courseGrade; 
+            get => _courseGrade;
             set
             {
-                if (_courseGrade == value) return;
+                if (_courseGrade.Equals(value)) return;
                 _courseGrade = value;
                 OnPropertyChanged(nameof(CourseGrade)); 
             }
         }
+        /// <summary>
+        /// Converts the CourseGrade from a string to a Grade.
+        /// </summary>
+        /// <param name="s">string to convert.</param>
+        /// <returns>A Grade for the string retrieved. </returns>
+        public Grade StringToGrade(string s)
+        {
+            if (s.Equals("A"))
+                return Grade.A;
+            else if (s.Equals("B"))
+                return Grade.B;
+            else if (s.Equals("C"))
+                return Grade.C;
+            else if (s.Equals("D"))
+                return Grade.D;
+            else
+                return Grade.F; 
+        }
+
+        public int StringToCreditHours(string s)
+        {
+            if (String.IsNullOrEmpty(s))
+                return 0;
+            else
+                return Int32.Parse(s); 
+        }
+
         /// <summary>
         /// Deletes the current course from the semester display. 
         /// </summary>
@@ -148,13 +167,11 @@ namespace GPACalculator
         /// <param name="e"></param>
         private void DeleteCourseControl(object sender, RoutedEventArgs e)
         {
-            //delete this course from control, so make a method inside of the semester control,
-            //that deletes the requested course. 
             SemesterControl semesterControl = TraverseTreeForSemesterControl;
-            CourseControl cc = sender as CourseControl;
-
-            semesterControl.RemoveCourse(cc); 
-
+            semesterControl.UpdateCourses(); 
+            Course course = new Course(CourseName, StringToCreditHours(CourseCreditHours), StringToGrade(CourseGrade));
+            semesterControl.RemoveCourse(course); 
+            
         }
     }
 }

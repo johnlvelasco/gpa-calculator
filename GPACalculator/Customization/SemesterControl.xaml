@@ -13,10 +13,6 @@
                 <Setter Property="TextAlignment" Value="Center"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
             </Style>
-            <Style TargetType="Border">
-                <Setter Property="BorderBrush" Value="Black"/>
-                <Setter Property="BorderThickness" Value=".50"/>
-            </Style>
             <Style TargetType="Button">
                 <Setter Property="FontSize" Value="40"/>
                 <Setter Property="Width" Value="300"/>
@@ -31,7 +27,7 @@
         </Grid.RowDefinitions>
         <TextBox Name="SemesterLabel" FontSize="40" Text="Semester 1" Height="75" Width="300" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBox>
         <Border Grid.Row="1">
-            <StackPanel  Orientation="Horizontal" x:Name="Labels" Background="LightGray">
+            <StackPanel HorizontalAlignment="Left" MaxWidth="1300" Orientation="Horizontal" x:Name="Labels" Background="LightGray">
                 <Border>
                     <TextBlock Width="600">Name</TextBlock>
                 </Border>
@@ -41,6 +37,7 @@
                 <Border>
                     <TextBlock Width="250">Grade</TextBlock>
                 </Border>
+                <Border Width="100"/>
             </StackPanel>
         </Border>
 

@@ -61,7 +61,7 @@ namespace GPACalculator {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/GPACalculator;component/listswapper.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/GPACalculator_viba5dhc_wpftmp;component/listswapper.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ListSwapper.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
