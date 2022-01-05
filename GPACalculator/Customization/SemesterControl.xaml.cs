@@ -71,10 +71,13 @@ namespace GPACalculator
 
         public void UpdateCourses()
         {
-            List<Course> oldList = Courses;
+            //List<Course> oldList = Courses;
             List<Course> newList = new List<Course>(); 
             foreach (CourseControl cc in CoursesStackPanel.Children)
             {
+                Course newCourse = new Course(cc.CourseName, cc.CourseCreditHours, cc.CourseGrade); 
+                newList.Add(newCourse);
+                /*
                 foreach(Course course in oldList)
                 {
                     if (cc.CourseName.Equals(course.CourseName) &&
@@ -88,6 +91,7 @@ namespace GPACalculator
                         break;
                     }
                 }
+                */
             }
             Courses = newList; 
         }
