@@ -47,51 +47,42 @@ namespace GPACalculator
         /// </summary>
         private void AddNewCourse()
         {
-            Course c = new Course("", 0, 0);
+            Course c = new Course("", 0, Grade.A);
             Courses.Add(c);
             CoursesStackPanel.Children.Add(new CourseControl(c));
         }
 
+        /// <summary>
+        /// Removes the course from the course list. 
+        /// </summary>
+        /// <param name="courseToRemove">the course to remove.</param>
+        /// <returns>true if the course is removed, false otherwise</returns>
         public bool RemoveCourse(Course courseToRemove)
         {
-            foreach (Course course in Courses)
+            foreach (CourseControl cc in CoursesStackPanel.Children)
             {
-                if (course.CourseName.Equals(courseToRemove.CourseName) &&
-                    course.CreditHours.Equals(courseToRemove.CreditHours) &&
-                    course.LetterGrade.Equals(courseToRemove.LetterGrade))
+                if (cc.CourseName.Equals(courseToRemove.CourseName) &&
+                    cc.CourseCreditHours == courseToRemove.CreditHours &&
+                    cc.CourseGrade == courseToRemove.LetterGrade)
                 { 
-                    Courses.Remove(course);
-                    CoursesStackPanel.Children.Remove(new CourseControl(course));
+                    CoursesStackPanel.Children.Remove(cc);
                     return true;
                 }
-                
             }
             return false;
-        }
-
+        }                       
+        /// <summary>
+        /// Updates Courses list for the semester.
+        /// </summary>
         public void UpdateCourses()
         {
-            List<Course> oldList = Courses;
             List<Course> newList = new List<Course>(); 
             foreach (CourseControl cc in CoursesStackPanel.Children)
             {
-                foreach(Course course in oldList)
-                {
-                    if (cc.CourseName.Equals(course.CourseName) &&
-                        cc.CourseCreditHours.Equals(course.CreditHours.ToString()) &&
-                        cc.CourseGrade.Equals(course.LetterGrade.ToString()))
-                    {
-                        Course newCourse = new Course(cc.courseNameText.Text,
-                            cc.StringToCreditHours(cc.courseCreditHoursText.Text),
-                            cc.StringToGrade(cc.courseGradeComboBox.Text));
-                        newList.Add(newCourse);
-                        break;
-                    }
-                }
+                Course newCourse = new Course(cc.CourseName, cc.CourseCreditHours, cc.CourseGrade);
+                newList.Add(newCourse); 
             }
             Courses = newList; 
         }
-
-
     }
 }

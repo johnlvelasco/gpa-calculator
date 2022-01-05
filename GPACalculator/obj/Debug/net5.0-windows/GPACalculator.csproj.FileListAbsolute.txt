@@ -112,3 +112,7 @@ C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\obj\Debug\net5.0-window
 C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\ref\GPACalculator.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\GPACalculator.pdb
 C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\GPACalculator.genruntimeconfig.cache
+C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\Customization\CourseControl.g.cs
+C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\Customization\SemesterControl.g.cs
+C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\Customization\CourseControl.baml
+C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\Customization\SemesterControl.baml

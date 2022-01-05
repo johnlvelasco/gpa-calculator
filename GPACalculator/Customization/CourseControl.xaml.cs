@@ -15,6 +15,9 @@ namespace GPACalculator
     /// </summary>
     public partial class CourseControl : UserControl, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Traverses the tree for the semester control parent that all course controls have.
+        /// </summary>
         private SemesterControl TraverseTreeForSemesterControl
         {
             get
@@ -59,7 +62,7 @@ namespace GPACalculator
         /// <param name="args"></param>
         private void CreditHoursChangedEventHandler(object sender, TextChangedEventArgs args)
         {
-            CourseCreditHours = courseCreditHoursText.Text;
+            CourseCreditHours = Int32.Parse(courseCreditHoursText.Text); 
         }
         /// <summary>
         /// Handles when the user changes the Grade for the course. 
@@ -68,7 +71,8 @@ namespace GPACalculator
         /// <param name="args"></param>
         private void GradeChangedEventHandler(object sender, SelectionChangedEventArgs args)
         {
-            CourseGrade = courseGradeComboBox.SelectedItem.ToString(); 
+            string grade = ((ComboBoxItem)courseGradeComboBox.SelectedItem).Content.ToString();
+            CourseGrade = StringToGrade(grade);
         }
 
         /// <summary>
@@ -78,7 +82,6 @@ namespace GPACalculator
         {
             InitializeComponent();
             if (c.CreditHours.Equals("0")) courseCreditHoursText.Text = ""; 
-            //else courseCreditHoursText.Text = c.CreditHours.ToString(); 
         }
         /// <summary>
         /// Private backing variable for the name of the Course
@@ -100,17 +103,17 @@ namespace GPACalculator
         /// <summary>
         /// Private backing variable for the Course's credit hours.
         /// </summary>
-        private string _courseCreditHours = "";
+        private int _courseCreditHours = 0;
         /// <summary>
         /// The Credit Hours for the course. 
         /// Subject to change when user changes value. 
         /// </summary>
-        public string CourseCreditHours
+        public int CourseCreditHours
         {
             get => _courseCreditHours;
             set
             {
-                if (_courseCreditHours.Equals(value)) return;
+                if (_courseCreditHours == value) return;
                 _courseCreditHours = value;
                 OnPropertyChanged(nameof(CourseCreditHours)); 
             }
@@ -118,17 +121,17 @@ namespace GPACalculator
         /// <summary>
         /// Private backing variable for the Course's Grade.
         /// </summary>
-        private string _courseGrade = "";
+        private Grade _courseGrade = Grade.A;
         /// <summary>
         /// The Grade for the course
         /// Subject to change when user changes value. 
         /// </summary>
-        public string CourseGrade
+        public Grade CourseGrade
         {
             get => _courseGrade;
             set
             {
-                if (_courseGrade.Equals(value)) return;
+                if (_courseGrade == value) return;
                 _courseGrade = value;
                 OnPropertyChanged(nameof(CourseGrade)); 
             }
@@ -169,9 +172,8 @@ namespace GPACalculator
         {
             SemesterControl semesterControl = TraverseTreeForSemesterControl;
             semesterControl.UpdateCourses(); 
-            Course course = new Course(CourseName, StringToCreditHours(CourseCreditHours), StringToGrade(CourseGrade));
+            Course course = new Course(CourseName, CourseCreditHours, CourseGrade);
             semesterControl.RemoveCourse(course); 
-            
         }
     }
 }
