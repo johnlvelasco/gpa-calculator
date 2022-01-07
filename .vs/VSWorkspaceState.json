@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Data",
+    "\\Data\\bin",
     "\\GPACalculator",
     "\\GPACalculator\\Customization"
   ],
-  "SelectedNode": "\\GPACalculator\\Customization\\SemesterControl.xaml.cs",
+  "SelectedNode": "\\Data\\Student.cs",
   "PreviewInSolutionExplorer": false
 }

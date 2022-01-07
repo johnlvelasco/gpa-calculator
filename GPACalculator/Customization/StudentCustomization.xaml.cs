@@ -28,9 +28,12 @@ namespace GPACalculator
         private void CompleteStudent(object sender, RoutedEventArgs e)
         {
             Student student = DataContext as Student;
+            
+            /*
             string[] firstlast = StudentNameTextBox.Text.Split();
             student.FirstName = firstlast[0];
             student.LastName = firstlast[1]; 
+            */
         }
     }
 }

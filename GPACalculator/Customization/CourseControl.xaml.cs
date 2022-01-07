@@ -155,18 +155,10 @@ namespace GPACalculator
                 return Grade.F; 
         }
 
-        public int StringToCreditHours(string s)
-        {
-            if (String.IsNullOrEmpty(s))
-                return 0;
-            else
-                return Int32.Parse(s); 
-        }
-
         /// <summary>
         /// Deletes the current course from the semester display. 
         /// </summary>
-        /// <param name="sender"></param>
+        /// <param name="sender">the red X to delete the course.</param>
         /// <param name="e"></param>
         private void DeleteCourseControl(object sender, RoutedEventArgs e)
         {

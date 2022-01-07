@@ -6,8 +6,14 @@ namespace Data
 {
     public class Student : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Handles when a property is changed, needs to be invoked.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged; 
-
+        /// <summary>
+        /// Invokes the propertychanged event handler using the name of the property that was changed. 
+        /// </summary>
+        /// <param name="propertyName">the name of the property.</param>
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); 
@@ -18,6 +24,19 @@ namespace Data
         /// </summary>
         public List<Semester> SemestersTaken = new List<Semester>();
 
+        /// <summary>
+        /// Field to keep track of the grade points used to calculate GPA.
+        /// </summary>
+        public int TotalGradePoints = 0; 
+
+        /// <summary>
+        /// Field to keep track of credits taken by the student in a semester. 
+        /// </summary>
+        public int TotalCreditHoursTaken = 0;
+
+        /// <summary>
+        /// Private backing variable for gpa
+        /// </summary>
         private double _gpa; 
 
         /// <summary>
@@ -34,22 +53,12 @@ namespace Data
             }
         }
 
-        private int _totalCreditsTaken; 
-        /// <summary>
-        /// Field to keep track of credits taken by the student in a semester. 
-        /// </summary>
-        public int TotalCreditsTaken
-        {
-            get => _totalCreditsTaken; 
-            set
-            {
-                if (_totalCreditsTaken == value) return;
-                _totalCreditsTaken = value;
-                OnPropertyChanged(nameof(TotalCreditsTaken)); 
-            }
-        }
 
-        private string _firstName;
+        /// <summary>
+        /// private backing variable for the student's first name. 
+        /// </summary>
+        private string _firstName = "";
+
         /// <summary>
         /// Gets the first name of the student.
         /// Is set within the constructor. 
@@ -64,8 +73,10 @@ namespace Data
                 OnPropertyChanged(nameof(FirstName)); 
             }
         }
-
-        private string _lastName; 
+        /// <summary>
+        /// private backing variable for the last name of the student. 
+        /// </summary>
+        private string _lastName = ""; 
         /// <summary>
         /// Gets the last name of the student. 
         /// Is set within the constructor. 
@@ -97,15 +108,15 @@ namespace Data
         {
             get
             {
-                if (TotalCreditsTaken < 30)
+                if (TotalCreditHoursTaken < 30)
                 {
                     return SchoolYear.Freshman; 
                 }
-                else if (TotalCreditsTaken < 60)
+                else if (TotalCreditHoursTaken < 60)
                 {
                     return SchoolYear.Sophomore;
                 }
-                else if (TotalCreditsTaken < 90)
+                else if (TotalCreditHoursTaken < 90)
                 {
                     return SchoolYear.Junior; 
                 }
@@ -116,10 +127,8 @@ namespace Data
             }
         }
         /// <summary>
-        /// Constructor for a new Student. Setting the first and last name. 
+        /// Constructor for a new Student. 
         /// </summary>
-        /// <param name="first">the student's first name</param>
-        /// <param name="last">the student's last name</param>
         public Student()
         {
 
@@ -131,7 +140,15 @@ namespace Data
         /// <returns>A two decimal GPA for all semesters taken.</returns>
         public double CalculateStudentGPA()
         {
-            return 0; 
+            //iterate through semester to get each course's grade & CH
+            foreach (Semester semester in SemestersTaken)
+            {
+                TotalCreditHoursTaken += semester.TotalCreditHours;
+                TotalGradePoints += semester.SemesterGradePoints; 
+            }
+             
+            return TotalGradePoints / TotalCreditHoursTaken; 
+
         }
     }
 }
