@@ -31,11 +31,25 @@ namespace GPACalculator
                 return parent as SemesterControl;
             }
         }
-
+        private SemesterDisplay TraverseTreeForSemesterDisplay
+        {
+            get
+            {
+                DependencyObject parent = this;
+                do
+                {
+                    parent = LogicalTreeHelper.GetParent(parent);
+                }
+                while (!(parent is SemesterDisplay || parent is null));
+                return parent as SemesterDisplay;
+            }
+        }
         /// <summary>
         /// Event that handles when a property is changed.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged; 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private SemesterDisplay SemesterDisplay => TraverseTreeForSemesterDisplay; 
 
         /// <summary>
         /// Notifies of a property change for the given property name. 
@@ -53,7 +67,7 @@ namespace GPACalculator
         private void NameChangedEventHandler(object sender, TextChangedEventArgs args)
         {
             CourseName = courseNameText.Text;
-
+            SemesterDisplay.UpdateSemestersTaken();
         }
         /// <summary>
         /// Handles when the user changes the number of credit hours for the course. 
@@ -62,7 +76,13 @@ namespace GPACalculator
         /// <param name="args"></param>
         private void CreditHoursChangedEventHandler(object sender, TextChangedEventArgs args)
         {
-            CourseCreditHours = Int32.Parse(courseCreditHoursText.Text); 
+            if (courseCreditHoursText.Text.Equals("")) return;
+            char[] chars = courseCreditHoursText.Text.ToCharArray();
+
+            if (chars[0] > 57 || chars[0] < 48) courseCreditHoursText.Text = ""; 
+            else CourseCreditHours = Int32.Parse(courseCreditHoursText.Text);
+            SemesterDisplay.UpdateSemestersTaken();
+
         }
         /// <summary>
         /// Handles when the user changes the Grade for the course. 
@@ -73,6 +93,8 @@ namespace GPACalculator
         {
             string grade = ((ComboBoxItem)courseGradeComboBox.SelectedItem).Content.ToString();
             CourseGrade = StringToGrade(grade);
+            SemesterDisplay.UpdateSemestersTaken();
+
         }
 
         /// <summary>

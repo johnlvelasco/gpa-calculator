@@ -146,6 +146,7 @@ namespace Data
                 TotalCreditHoursTaken += semester.TotalCreditHours;
                 TotalGradePoints += semester.SemesterGradePoints; 
             }
+            if (TotalCreditHoursTaken == 0) return 0; 
              
             return TotalGradePoints / TotalCreditHoursTaken; 
 

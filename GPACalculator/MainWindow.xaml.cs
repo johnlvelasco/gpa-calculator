@@ -26,5 +26,6 @@ namespace GPACalculator
             InitializeComponent();
             DataContext = new StudentDatabase(); 
         }
+
     }
 }

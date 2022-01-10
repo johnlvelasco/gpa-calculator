@@ -35,5 +35,17 @@ namespace GPACalculator
             student.LastName = firstlast[1]; 
             */
         }
+
+        /// <summary>
+        /// Updates the GPA Display on the Student Customization screen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CalculateGPA(object sender, RoutedEventArgs e)
+        {
+            Student student = DataContext as Student;
+            double gpa = student.CalculateStudentGPA();
+            textGPADisplay.Text = Math.Round(gpa).ToString(); 
+        }
     }
 }

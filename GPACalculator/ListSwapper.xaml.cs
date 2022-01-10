@@ -29,7 +29,8 @@ namespace GPACalculator
         public void AddNewStudent(object sender, RoutedEventArgs e)
         {
             StudentCustomization studentCustomization = new StudentCustomization();
-            studentCustomization.DataContext = new Student(); 
+            Student student = new Student();
+            studentCustomization.DataContext = student;
             MainWindow main = TraverseTreeForMain;
             main.MainWindowBorder.Child = studentCustomization; 
 

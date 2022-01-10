@@ -55,7 +55,6 @@ namespace Data
             }
         }
 
-
         /// <summary>
         /// Gets the grade points for the given grade, used in calculating GPA. 
         /// </summary>
@@ -84,6 +83,7 @@ namespace Data
                 TotalCreditHours += c.CreditHours;
                 SemesterGradePoints += GetCourseGradePoints(c.LetterGrade, c.CreditHours); 
             }
+            if (TotalCreditHours == 0) return 0;
             return SemesterGradePoints / TotalCreditHours; 
         }
     }

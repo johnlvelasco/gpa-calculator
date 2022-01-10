@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = DataTests
-build_property.ProjectDir = C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\DataTests\
+build_property.ProjectDir = C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\
