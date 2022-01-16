@@ -102,12 +102,12 @@ C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\DataTests\obj\
 C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\DataTests\obj\Debug\net5.0\DataTests.pdb
 C:\Users\johnnyvgoode\source\reposPersonalProjects\gpa-calculator\DataTests\obj\Debug\net5.0\DataTests.genruntimeconfig.cache
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\CoverletSourceRootsMapping
-C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\testhost.exe
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\testhost.dll
+C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\testhost.exe
+C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\xunit.runner.reporters.netcoreapp10.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\xunit.runner.utility.netcoreapp10.dll
-C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\DataTests.deps.json
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\DataTests.runtimeconfig.json
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\DataTests.runtimeconfig.dev.json

@@ -26,10 +26,10 @@
         </Border>
 
         <StackPanel Grid.Column="1" Margin="0,100">
-            <Border BorderBrush="Black" BorderThickness="2" Grid.Column="1" Height="300" Width="300">
+            <Border BorderBrush="Black" BorderThickness="2" CornerRadius="150" Grid.Column="1" Height="300" Width="300">
                 <TextBlock x:Name="textGPADisplay" FontSize="75" VerticalAlignment="Center" HorizontalAlignment="Center">GPA</TextBlock>
             </Border>
-            <StackPanel Grid.Column="1" Margin="0,100">
+            <StackPanel Grid.Column="1" Margin="0,50">
                 <TextBlock>Student Name</TextBlock>
                 <TextBox x:Name="StudentNameTextBox" Width="500" Height="100" FontSize="30" TextAlignment="Center"></TextBox>
             </StackPanel>  

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Data;
@@ -16,6 +12,28 @@ namespace GPACalculator
     public partial class SemesterControl : UserControl
     {
         /// <summary>
+        /// Traverses the tree for the SemesterDisplay parent 
+        /// Which should always be the first parent. 
+        /// </summary>
+        private SemesterDisplay TraverseTreeForSemesterDisplay
+        {
+            get
+            {
+                DependencyObject parent = this;
+                do
+                {
+                    parent = LogicalTreeHelper.GetParent(parent);
+                }
+                while (!(parent is SemesterDisplay || parent is null));
+                return (SemesterDisplay)parent; 
+            }
+        }
+        /// <summary>
+        /// Gets the semester that is displayed in the control.
+        /// </summary>
+        public Semester GetSemester { get; }
+
+        /// <summary>
         /// Constructor for the Semester Control that displays all courses in the collection. 
         /// </summary>
         public SemesterControl(Semester semester)
@@ -25,6 +43,8 @@ namespace GPACalculator
             {
                 AddNewCourse();
             }
+            semester.Courses = Courses; 
+            GetSemester = semester; 
         }
 
         /// <summary>
@@ -49,7 +69,7 @@ namespace GPACalculator
         {
             Course c = new Course("", 0, Grade.A);
             Courses.Add(c);
-            CoursesStackPanel.Children.Add(new CourseControl(c));
+            CoursesStackPanel.Children.Insert(CoursesStackPanel.Children.Count-1, new CourseControl(c));
         }
 
         /// <summary>
@@ -77,12 +97,48 @@ namespace GPACalculator
         public void UpdateCourses()
         {
             List<Course> newList = new List<Course>(); 
-            foreach (CourseControl cc in CoursesStackPanel.Children)
+            foreach (UIElement element in CoursesStackPanel.Children)
             {
+                if (element is Button) break;
+                CourseControl cc = element as CourseControl; 
                 Course newCourse = new Course(cc.CourseName, cc.CourseCreditHours, cc.CourseGrade);
                 newList.Add(newCourse); 
             }
-            Courses = newList; 
+            Courses = newList;
+            GetSemester.Courses = Courses;
+        }
+
+        /// <summary>
+        /// Removes the current semester from the SemesterDisplay control parent.
+        /// </summary>
+        /// <param name="sender">the SemesterControl UserControl</param>
+        /// <param name="e">The Remove Semester Button</param>
+        private void RemoveSemester(object sender, RoutedEventArgs e)
+        {
+            SemesterDisplay sd = TraverseTreeForSemesterDisplay;
+            if (sd == null) throw new Exception("TraverseForSemesterDisplay was null in SemesterControl.cs");
+
+            UpdateCourses(); 
+            foreach(UIElement element in sd.SemesterStackPanel.Children)
+            {
+                SemesterControl sc = element as SemesterControl;
+                Semester sem = sc.GetSemester; 
+                if (sem.Name.Equals(GetSemester.Name))
+                {
+                    sd.SemesterStackPanel.Children.Remove(element);
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Text Changed Event Handler that handles when a user updates the name of the semester
+        /// </summary>
+        /// <param name="sender">the semester name text box.</param>
+        /// <param name="args">event args for a text changed event.</param>
+        private void SemesterNameChangedEventHandler(object sender, TextChangedEventArgs args)
+        {
+            GetSemester.Name = SemesterLabel.Text; 
         }
     }
 }

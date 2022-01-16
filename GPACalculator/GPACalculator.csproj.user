@@ -13,9 +13,6 @@
     <Compile Update="DisplayStudentControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Customization\GPAControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="ListSwapper.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,9 +34,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DisplayStudentControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Customization\GPAControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ListSwapper.xaml">

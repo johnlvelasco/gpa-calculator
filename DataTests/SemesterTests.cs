@@ -48,13 +48,45 @@ namespace DataTests
             Assert.Empty(semester.Courses);
         }
         /// <summary>
+        /// Checks if the inital value of SEmesterGradePoints is correct.
+        /// </summary>
+        [Fact]
+        public void SemesterGradePointsShouldBeCorrect()
+        {
+            var semester = new Semester();
+            Assert.Equal(0, semester.SemesterGradePoints); 
+        }
+
+        /// <summary>
+        /// Ensures the SemesterGradePoints is able to be set.
+        /// </summary>
+        [Fact]
+        public void ShouldBeAbleToSetSemesterGradePoints()
+        {
+            var semester = new Semester();
+            semester.SemesterGradePoints = 90;
+            Assert.Equal(90, semester.SemesterGradePoints); 
+
+        }
+
+        /// <summary>
         /// Checks if the intial value of total credit hours is correct.
         /// </summary>
         [Fact]
-        public void TotalCreditHoursShouldBeCorrect()
+        public void SemesterCreditHoursShouldBeCorrect()
         {
             var semester = new Semester();
-            Assert.Equal(0, semester.TotalCreditHours);
+            Assert.Equal(0, semester.SemesterCreditHours);
+        }
+        /// <summary>
+        /// Checks if we are able to set the semester credit hours value. 
+        /// </summary>
+        [Fact]
+        public void ShouldBeAbleToSetSemesterCreditHours()
+        {
+            var semester = new Semester();
+            semester.SemesterCreditHours = 30;
+            Assert.Equal(30, semester.SemesterCreditHours); 
         }
     }
 }

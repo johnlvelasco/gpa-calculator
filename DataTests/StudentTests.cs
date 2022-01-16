@@ -57,53 +57,23 @@ namespace DataTests
             Assert.Equal(0, student.TotalCreditHoursTaken); 
         }
         /// <summary>
-        /// Ensures the intial value of the FirstName property is correct.
-        /// </summary>
-        [Fact]
-        public void FirstNameShouldReturnCorrectValue()
-        {
-            var student = new Student();
-            Assert.Equal("", student.FirstName); 
-        }
-        /// <summary>
-        /// Checks if the first name property is able to be set.
-        /// </summary>
-        [Fact]
-        public void ShouldBeAbleToSetFirstName()
-        {
-            var student = new Student();
-            student.FirstName = "John";
-            Assert.Equal("John", student.FirstName); 
-        }
-        /// <summary>
-        /// Ensures the initial value of LastName is correct.
-        /// </summary>
-        [Fact]
-        public void LastNameShouldReturnCorrectValue()
-        {
-            var student = new Student();
-            Assert.Equal("", student.LastName); 
-        }
-        /// <summary>
-        /// Checks if the last name property is able to be set.
-        /// </summary>
-        [Fact]
-        public void ShouldBeAbleToSetLastName()
-        {
-            var student = new Student();
-            student.LastName = "Doe";
-            Assert.Equal("Doe", student.LastName); 
-        }
-        /// <summary>
         /// Ensures the value of FullName is correct.
         /// </summary>
         [Fact]
         public void FullNameShouldReturnCorrectValue()
         {
             var student = new Student();
-            student.FirstName = "John";
-            student.LastName = "Doe";
-            Assert.Equal("John Doe", student.FullName); 
+            Assert.Equal("", student.FullName); 
+        }
+        /// <summary>
+        /// Ensures the value of FullName is correct.
+        /// </summary>
+        [Fact]
+        public void ShouldBeAbleToSetFullName()
+        {
+            var student = new Student();
+            student.FullName = "John Doe"; 
+            Assert.Equal("John Doe", student.FullName);
         }
         /// <summary>
         /// Checks whether the Standing property returns the correct schoolyear for the credithours set.

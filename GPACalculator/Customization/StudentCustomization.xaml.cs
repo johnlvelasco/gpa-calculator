@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Data;
+using Newtonsoft.Json;
+using System.IO; 
 
 namespace GPACalculator
 {
@@ -20,22 +13,66 @@ namespace GPACalculator
     /// </summary>
     public partial class StudentCustomization : UserControl
     {
+        /// <summary>
+        /// Traverses the Tree for the MainWindow parent to swap the window. 
+        /// </summary>
+        public MainWindow TraverseTreeForMainWindow
+        {
+            get
+            {
+                DependencyObject parent = this;
+                do
+                {
+                    parent = LogicalTreeHelper.GetParent(parent);
+                }
+                while (!(parent is MainWindow || parent is null));
+                return parent as MainWindow;
+            }
+        }
+
+
+        /// <summary>
+        /// Constructs a new Student Customization Control for customizing a new or existing student's GPA. 
+        /// </summary>
         public StudentCustomization()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Completes the student, sending its new information to a database/text doc.
+        /// Should implement some form of encryption method to safeguard information. 
+        /// </summary>
+        /// <param name="sender">Student Customization UserControl.</param>
+        /// <param name="e">The Complete Student button.</param>
         private void CompleteStudent(object sender, RoutedEventArgs e)
         {
             Student student = DataContext as Student;
-            
-            /*
-            string[] firstlast = StudentNameTextBox.Text.Split();
-            student.FirstName = firstlast[0];
-            student.LastName = firstlast[1]; 
-            */
+            student.FullName = StudentNameTextBox.Text;
+            CalculateGPA(sender, e);
+            UpdateSemestersTaken();
+
+            MainWindow main = TraverseTreeForMainWindow;
+            main.Students.Add(student);
+
+            main.MainWindowBorder.Child = new StudentSelection(); 
         }
 
+        /// <summary>
+        /// Gets the grade points for the given grade, used in calculating GPA. 
+        /// </summary>
+        /// <param name="grade">the grade used to determine grade points</param>
+        /// <param name="credits">the credits of the course to determine grade points.</param>
+        /// <returns>the grade points for the course.</returns>
+        public double GetCourseGradePoints(Grade grade, int credits)
+        {
+            int points = 0;
+            if (grade == Grade.A) points += 4;
+            else if (grade == Grade.B) points += 3;
+            else if (grade == Grade.C) points += 2;
+            else if (grade == Grade.D) points += 1;
+
+            return points * credits;
+        }
         /// <summary>
         /// Updates the GPA Display on the Student Customization screen.
         /// </summary>
@@ -43,9 +80,52 @@ namespace GPACalculator
         /// <param name="e"></param>
         private void CalculateGPA(object sender, RoutedEventArgs e)
         {
+            Student student = DataContext as Student; 
+            double creditHoursTaken = 0;
+            double gradePoints = 0;
+            SemesterDisplay sd = SemesterDisplayBorder.Child as SemesterDisplay;
+            
+            if (sd.SemesterStackPanel.Children.Count == 0) return;
+            
+            foreach (UIElement element in sd.SemesterStackPanel.Children)
+            {
+                SemesterControl sc = element as SemesterControl;
+                sc.UpdateCourses(); 
+                foreach (Course course in sc.Courses)
+                {
+                    creditHoursTaken += (double)course.CreditHours;
+                    gradePoints += GetCourseGradePoints(course.LetterGrade, course.CreditHours);
+                }
+            }
+            if (creditHoursTaken == 0)
+            {
+                student.GPA = 0.0;
+                textGPADisplay.Text = "0.0"; 
+                return; 
+            }
+            student.TotalGradePoints = (int)gradePoints;
+            student.TotalCreditHoursTaken = (int)creditHoursTaken; 
+            student.GPA = gradePoints / creditHoursTaken;
+            textGPADisplay.Text = student.GPA.ToString("0.0");
+        }
+
+        /// <summary>
+        /// Updates the List used to track a students semesters taken.
+        /// Used for loading an existing student. 
+        /// </summary>
+        private void UpdateSemestersTaken()
+        {
+            List<Semester> semesters = new List<Semester>();
+            SemesterDisplay sd = SemesterDisplayBorder.Child as SemesterDisplay;
+
+            foreach (UIElement element in sd.SemesterStackPanel.Children)
+            {
+                SemesterControl sc = element as SemesterControl;
+                sc.UpdateCourses(); 
+                semesters.Add(sc.GetSemester);
+            }
             Student student = DataContext as Student;
-            double gpa = student.CalculateStudentGPA();
-            textGPADisplay.Text = Math.Round(gpa).ToString(); 
+            student.SemestersTaken = semesters;
         }
     }
 }

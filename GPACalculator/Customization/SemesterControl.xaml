@@ -25,16 +25,16 @@
             <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox Name="SemesterLabel" FontSize="40" Text="Semester 1" Height="75" Width="300" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBox>
+        <TextBox Name="SemesterLabel" FontSize="40" TextChanged="SemesterNameChangedEventHandler" Height="75" Width="300" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBox>
         <Border Grid.Row="1">
-            <StackPanel HorizontalAlignment="Left" MaxWidth="1300" Orientation="Horizontal" x:Name="Labels" Background="LightGray">
-                <Border>
+            <StackPanel HorizontalAlignment="Left" MaxWidth="1200" Orientation="Horizontal" x:Name="Labels" Background="LightGray">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,0">
                     <TextBlock Width="600">Name</TextBlock>
                 </Border>
-                <Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,0">
                     <TextBlock Width="250">Credit Hours</TextBlock>
                 </Border>
-                <Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,0">
                     <TextBlock Width="250">Grade</TextBlock>
                 </Border>
                 <Border Width="100"/>
@@ -42,9 +42,9 @@
         </Border>
 
         <StackPanel Grid.Row="2" Name="CoursesStackPanel">
-
+            <Button x:Name="AddCourseButton" Click="AddCourse" HorizontalAlignment="Left" Width="1200" Height="100">Add New Course</Button>
         </StackPanel>
-        <Button Grid.Row="0" HorizontalAlignment="Center" x:Name="AddCourseButton" Click="AddCourse" Height="76" Margin="0,12,0,0" VerticalAlignment="Top">Add Course</Button>
+        <Button Grid.Row="0" HorizontalAlignment="Right" x:Name="RemoveSemesterButton" Click="RemoveSemester" Width="400" Height="75" Margin="0,15,10,0" VerticalAlignment="Top">Remove Semester</Button>
 
     </Grid>
 

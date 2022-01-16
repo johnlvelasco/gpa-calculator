@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel; 
 
 namespace Data
 {
+    /// <summary>
+    /// A semester which contains a Name property, a List of Courses, 
+    /// and the total grade points and credit hours. 
+    /// </summary>
     public class Semester : INotifyPropertyChanged
     {
         /// <summary>
@@ -22,14 +23,41 @@ namespace Data
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); 
         }
         /// <summary>
+        /// Private backing variable for the semester's grade points.
+        /// </summary>
+        private int _semesterGradePoints = 0; 
+
+        /// <summary>
         /// Grade points used for calculating semester GPA
         /// </summary>
-        public int SemesterGradePoints = 0;
+        public int SemesterGradePoints
+        {
+            get => _semesterGradePoints; 
+            set
+            {
+                if (value == _semesterGradePoints) return;
+                _semesterGradePoints = value;
+                OnPropertyChanged(nameof(SemesterGradePoints)); 
+            }
+        }
+        /// <summary>
+        /// Private backing variable for the semester's credit hours taken. 
+        /// </summary>
+        private int _semesterCreditHours = 0; 
 
         /// <summary>
         /// THe total credit hours for the semester. 
         /// </summary>
-        public int TotalCreditHours = 0; 
+        public int SemesterCreditHours
+        {
+            get => _semesterCreditHours; 
+            set
+            {
+                if (value == _semesterCreditHours) return;
+                _semesterCreditHours = value;
+                OnPropertyChanged(nameof(SemesterCreditHours)); 
+            }
+        }
 
         /// <summary>
         /// List of Courses in the semester used to calculate Semester GPA. 
@@ -53,38 +81,6 @@ namespace Data
                 _name = value;
                 OnPropertyChanged(nameof(Name)); 
             }
-        }
-
-        /// <summary>
-        /// Gets the grade points for the given grade, used in calculating GPA. 
-        /// </summary>
-        /// <param name="grade">the grade used to determine grade points</param>
-        /// <param name="credits">the credits of the course to determine grade points.</param>
-        /// <returns>the grade points for the course.</returns>
-        public int GetCourseGradePoints(Grade grade, int credits)
-        {
-            int points = 0; 
-            if (grade == Grade.A) points += 4;
-            else if (grade == Grade.B) points += 3;
-            else if (grade == Grade.C) points += 2;
-            else if (grade == Grade.D) points += 1;
-
-            return points * credits; 
-        }
-
-        /// <summary>
-        /// Calculates the GPA for the current semester. 
-        /// </summary>
-        /// <returns>The GPA as a double, will be formatted as a two decimal number.</returns>
-        public double CalculateSemesterGPA()
-        {
-            foreach (Course c in Courses)
-            {
-                TotalCreditHours += c.CreditHours;
-                SemesterGradePoints += GetCourseGradePoints(c.LetterGrade, c.CreditHours); 
-            }
-            if (TotalCreditHours == 0) return 0;
-            return SemesterGradePoints / TotalCreditHours; 
         }
     }
 }

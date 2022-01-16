@@ -52,52 +52,23 @@ namespace Data
                 OnPropertyChanged(nameof(GPA)); 
             }
         }
-
-
         /// <summary>
-        /// private backing variable for the student's first name. 
+        /// Private backing variable for the Student's name. 
         /// </summary>
-        private string _firstName = "";
-
-        /// <summary>
-        /// Gets the first name of the student.
-        /// Is set within the constructor. 
-        /// </summary>
-        public string FirstName
-        {
-            get => _firstName;
-            set
-            {
-                if (_firstName == value) return;
-                _firstName = value;
-                OnPropertyChanged(nameof(FirstName)); 
-            }
-        }
-        /// <summary>
-        /// private backing variable for the last name of the student. 
-        /// </summary>
-        private string _lastName = ""; 
-        /// <summary>
-        /// Gets the last name of the student. 
-        /// Is set within the constructor. 
-        /// </summary>
-        public string LastName
-        {
-            get => _lastName; 
-            set
-            {
-                if (_lastName == value) return;
-                _lastName = value;
-                OnPropertyChanged(nameof(LastName)); 
-            }
-        }
+        private string _fullName = ""; 
 
         /// <summary>
         /// Returns the full name of the student, combining the first and last name. 
         /// </summary>
         public string FullName
         {
-            get => FirstName + " " + LastName; 
+            get => _fullName; 
+            set
+            {
+                if (value == _fullName) return;
+                _fullName = value;
+                OnPropertyChanged(FullName); 
+            }
         }
 
 
@@ -125,31 +96,6 @@ namespace Data
                     return SchoolYear.Senior; 
                 }
             }
-        }
-        /// <summary>
-        /// Constructor for a new Student. 
-        /// </summary>
-        public Student()
-        {
-
-        }         
-
-        /// <summary>
-        /// Calculates the GPA for the student by iterating through its taken semesters list. 
-        /// </summary>
-        /// <returns>A two decimal GPA for all semesters taken.</returns>
-        public double CalculateStudentGPA()
-        {
-            //iterate through semester to get each course's grade & CH
-            foreach (Semester semester in SemestersTaken)
-            {
-                TotalCreditHoursTaken += semester.TotalCreditHours;
-                TotalGradePoints += semester.SemesterGradePoints; 
-            }
-            if (TotalCreditHoursTaken == 0) return 0; 
-             
-            return TotalGradePoints / TotalCreditHoursTaken; 
-
         }
     }
 }

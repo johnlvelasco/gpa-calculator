@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.ComponentModel;
@@ -31,6 +27,9 @@ namespace GPACalculator
                 return parent as SemesterControl;
             }
         }
+        /// <summary>
+        /// Traverses the tree for the SemesterDisplay parent.
+        /// </summary>
         private SemesterDisplay TraverseTreeForSemesterDisplay
         {
             get
@@ -49,6 +48,9 @@ namespace GPACalculator
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// The Semester Display that all courses are nested under. 
+        /// </summary>
         private SemesterDisplay SemesterDisplay => TraverseTreeForSemesterDisplay; 
 
         /// <summary>
@@ -59,6 +61,8 @@ namespace GPACalculator
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); 
         }
+
+
         /// <summary>
         /// Handles when the user changes the name of the course. 
         /// </summary>
@@ -181,7 +185,7 @@ namespace GPACalculator
         /// Deletes the current course from the semester display. 
         /// </summary>
         /// <param name="sender">the red X to delete the course.</param>
-        /// <param name="e"></param>
+        /// <param name="e">event of user clicking delete course button.</param>
         private void DeleteCourseControl(object sender, RoutedEventArgs e)
         {
             SemesterControl semesterControl = TraverseTreeForSemesterControl;

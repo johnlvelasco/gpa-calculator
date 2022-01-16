@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Data; 
+using Data;
+using System.IO;
+using Newtonsoft.Json; 
 
 namespace GPACalculator
 {
@@ -24,8 +15,41 @@ namespace GPACalculator
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new StudentDatabase(); 
+            if (Students.Count == 0)
+            {
+                //try reading thru the json. 
+            }
         }
 
+        /// <summary>
+        /// List of the students for the JSON database.
+        /// </summary>
+        public List<Student> Students = new List<Student>();
+
+        private string JsonString; 
+
+        /// <summary>
+        /// Updates the JSON database file with the list of students. 
+        /// </summary>
+        public void UpdateJSON()
+        {
+            JsonString = JsonConvert.SerializeObject(Students);
+            File.WriteAllText(@"C:\Users\johnv\source\repos\gpa-calculator\student-database", JsonString);
+        }
+        /// <summary>
+        /// Fills the empty Students list with the Database of Students. 
+        /// </summary>
+        public void FillStudents()
+        {
+            Students = JsonConvert.DeserializeObject<List<Student>>(JsonString); 
+        }
+
+        //Serialization & Deserialization for a single Student. 
+        /*
+        string jsonString = JsonConvert.SerializeObject(student);
+        File.WriteAllText(@"C:\Users\johnv\source\repos\gpa-calculator\student-database", jsonString);
+
+            Student deserialStudent = JsonConvert.DeserializeObject<Student>(jsonString);
+        */
     }
 }

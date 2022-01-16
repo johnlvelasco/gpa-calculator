@@ -1,20 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Data;
-
 
 namespace GPACalculator
 {
@@ -55,6 +43,7 @@ namespace GPACalculator
             semester.Name = "Semester " + (Semesters.Count + 1).ToString("D1");
             Semesters.Add(semester);
 
+            //Could add to semesters taken when completing the student. 
             DataContext = new Student();
             Student student = DataContext as Student;
             student.SemestersTaken.Add(semester);
@@ -65,6 +54,9 @@ namespace GPACalculator
             SemesterStackPanel.Children.Add(sc);
         }
 
+        /// <summary>
+        /// Updates the SemestersTaken property of the student. 
+        /// </summary>
         public void UpdateSemestersTaken()
         {
             StudentCustomization sc = TraverseTreeForStudentCustomization;
@@ -75,8 +67,8 @@ namespace GPACalculator
         /// <summary>
         /// Adds a new semester control to the display. 
         /// </summary>
-        /// <param name="sender">s</param>
-        /// <param name="e">e</param>
+        /// <param name="sender">the Add New Semester Button</param>
+        /// <param name="e">the event where the users selects the add new semester button. </param>
         private void AddSemester(object sender, RoutedEventArgs e)
         {
             Semester semester = new Semester();
@@ -85,7 +77,6 @@ namespace GPACalculator
             StudentCustomization stu = TraverseTreeForStudentCustomization; 
             Student student = stu.DataContext as Student;
             student.SemestersTaken = Semesters;
-            //student.SemestersTaken.Add(semester);
             stu.DataContext = student;
 
             SemesterControl sc = new SemesterControl(semester);
