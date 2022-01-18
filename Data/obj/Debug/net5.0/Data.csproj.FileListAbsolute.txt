@@ -33,4 +33,3 @@ C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\Data.csproj.Cor
 C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\Data.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\ref\Data.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\Data.pdb
-C:\Users\johnv\Source\Repos\gpa-calculator\Data\obj\Debug\net5.0\Data.csproj.AssemblyReference.cache

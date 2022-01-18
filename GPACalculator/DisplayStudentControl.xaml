@@ -8,16 +8,14 @@
              d:DesignHeight="200" d:DesignWidth="1920">
     <UserControl.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="50"/>
-            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="40"/>
             <Setter Property="Width" Value="640"/>
             <Setter Property="TextAlignment" Value="Center"/>
         </Style>
     </UserControl.Resources>
-
     <StackPanel Orientation="Horizontal">
-        <TextBlock Text="{Binding Path=FullName}"/>
-        <TextBlock Text="{Binding Path=TotalCreditsTaken}"/>
-        <TextBlock Text="{Binding Path=GPA}"/>
+        <TextBlock x:Name="textStudentName"/>
+        <TextBlock x:Name="textStudentCreditHours"/>
+        <TextBlock x:Name="textStudentGPA"/>
     </StackPanel>
 </UserControl>

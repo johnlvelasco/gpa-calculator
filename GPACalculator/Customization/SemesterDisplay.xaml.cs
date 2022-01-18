@@ -34,6 +34,11 @@ namespace GPACalculator
         public List<Semester> Semesters = new List<Semester>();
 
         /// <summary>
+        /// Collection of SemesterControls used in the SemesterDisplay.
+        /// </summary>
+        public List<SemesterControl> SemesterControls = new List<SemesterControl>(); 
+
+        /// <summary>
         /// Constructor for the semester display control. 
         /// </summary>
         public SemesterDisplay()
@@ -50,6 +55,7 @@ namespace GPACalculator
             DataContext = student;
 
             SemesterControl sc = new SemesterControl(semester);
+            SemesterControls.Add(sc); 
             sc.SemesterLabel.Text = semester.Name;
             SemesterStackPanel.Children.Add(sc);
         }
@@ -80,6 +86,7 @@ namespace GPACalculator
             stu.DataContext = student;
 
             SemesterControl sc = new SemesterControl(semester);
+            SemesterControls.Add(sc); 
             sc.SemesterLabel.Text = semester.Name;
             SemesterStackPanel.Children.Add(sc);
         }

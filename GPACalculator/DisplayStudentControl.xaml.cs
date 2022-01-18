@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Data; 
 
 namespace GPACalculator
 {
@@ -20,9 +10,26 @@ namespace GPACalculator
     /// </summary>
     public partial class DisplayStudentControl : UserControl
     {
-        public DisplayStudentControl()
+        /// <summary>
+        /// Constructor for displaying a student control, setting all text properties for the textblocks.
+        /// </summary>
+        /// <param name="student">The student to display.</param>
+        public DisplayStudentControl(Student student)
         {
             InitializeComponent();
+            Student = student;
+            textStudentName.Text = student.FullName;
+            textStudentCreditHours.Text = student.TotalCreditHoursTaken.ToString();
+            textStudentGPA.Text = student.GPA.ToString("0.0");
         }
+
+        /// <summary>
+        /// The student used in the displaycontrol. 
+        /// </summary>
+        public Student Student { get; }
+
+        
+
+        
     }
 }

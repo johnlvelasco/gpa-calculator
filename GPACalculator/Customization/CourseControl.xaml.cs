@@ -71,6 +71,7 @@ namespace GPACalculator
         private void NameChangedEventHandler(object sender, TextChangedEventArgs args)
         {
             CourseName = courseNameText.Text;
+            if (SemesterDisplay == null) return;
             SemesterDisplay.UpdateSemestersTaken();
         }
         /// <summary>
@@ -83,8 +84,16 @@ namespace GPACalculator
             if (courseCreditHoursText.Text.Equals("")) return;
             char[] chars = courseCreditHoursText.Text.ToCharArray();
 
-            if (chars[0] > 57 || chars[0] < 48) courseCreditHoursText.Text = ""; 
-            else CourseCreditHours = Int32.Parse(courseCreditHoursText.Text);
+            if (chars[0] > 57 || chars[0] < 48) courseCreditHoursText.Text = "";
+            else
+            {
+                CourseCreditHours = Int32.Parse(chars[0].ToString());
+                courseCreditHoursText.Text = chars[0].ToString(); 
+            }
+
+
+
+            if (SemesterDisplay == null) return;
             SemesterDisplay.UpdateSemestersTaken();
 
         }
@@ -97,8 +106,8 @@ namespace GPACalculator
         {
             string grade = ((ComboBoxItem)courseGradeComboBox.SelectedItem).Content.ToString();
             CourseGrade = StringToGrade(grade);
+            if (SemesterDisplay == null) return;
             SemesterDisplay.UpdateSemestersTaken();
-
         }
 
         /// <summary>
@@ -159,9 +168,12 @@ namespace GPACalculator
             {
                 if (_courseGrade == value) return;
                 _courseGrade = value;
-                OnPropertyChanged(nameof(CourseGrade)); 
+                OnPropertyChanged(nameof(CourseGrade));
+                
             }
         }
+
+
         /// <summary>
         /// Converts the CourseGrade from a string to a Grade.
         /// </summary>

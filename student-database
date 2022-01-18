@@ -1,1 +1,82 @@
-{"SemestersTaken":[{"Courses":[{"CourseName":"art","CreditHours":3,"LetterGrade":1},{"CourseName":"","CreditHours":0,"LetterGrade":0},{"CourseName":"","CreditHours":0,"LetterGrade":0},{"CourseName":"","CreditHours":0,"LetterGrade":0}],"SemesterGradePoints":0,"SemesterCreditHours":0,"Name":"Semester 1"}],"TotalGradePoints":9,"TotalCreditHoursTaken":3,"GPA":3.0,"FullName":"","Standing":0}
+[
+  {
+    "SemestersTaken": [
+      {
+        "Courses": [
+          {
+            "CourseName": "CIS300",
+            "CreditHours": 3,
+            "LetterGrade": 1
+          },
+          {
+            "CourseName": "",
+            "CreditHours": 0,
+            "LetterGrade": 0
+          }
+        ],
+        "SemesterGradePoints": 0,
+        "SemesterCreditHours": 0,
+        "Name": "FALL 2020"
+      },
+      {
+        "Courses": [
+          {
+            "CourseName": "",
+            "CreditHours": 0,
+            "LetterGrade": 0
+          },
+          {
+            "CourseName": "",
+            "CreditHours": 0,
+            "LetterGrade": 0
+          },
+          {
+            "CourseName": "",
+            "CreditHours": 0,
+            "LetterGrade": 0
+          },
+          {
+            "CourseName": "",
+            "CreditHours": 0,
+            "LetterGrade": 0
+          }
+        ],
+        "SemesterGradePoints": 0,
+        "SemesterCreditHours": 0,
+        "Name": "Semester 2"
+      },
+      {
+        "Courses": [
+          {
+            "CourseName": "BIOL 401",
+            "CreditHours": 5,
+            "LetterGrade": 2
+          },
+          {
+            "CourseName": "",
+            "CreditHours": 0,
+            "LetterGrade": 0
+          },
+          {
+            "CourseName": "",
+            "CreditHours": 0,
+            "LetterGrade": 0
+          },
+          {
+            "CourseName": "",
+            "CreditHours": 0,
+            "LetterGrade": 0
+          }
+        ],
+        "SemesterGradePoints": 0,
+        "SemesterCreditHours": 0,
+        "Name": "Semester 3"
+      }
+    ],
+    "TotalGradePoints": 19,
+    "TotalCreditHoursTaken": 8,
+    "GPA": 2.375,
+    "FullName": "JOHN VELASCO",
+    "Standing": 0
+  }
+]

@@ -71,7 +71,6 @@ namespace Data
             }
         }
 
-
         /// <summary>
         /// The School Year standing that the student is.
         /// </summary>

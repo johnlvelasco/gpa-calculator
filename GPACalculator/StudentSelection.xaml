@@ -34,7 +34,7 @@
             <TextBlock>GPA</TextBlock>
         </Border>
 
-        <Border Grid.Row="1" Grid.ColumnSpan="3">
+        <Border Grid.Row="1" Grid.ColumnSpan="3" x:Name="ListSwapperBorder">
             <local:ListSwapper/>
         </Border>
     </Grid>

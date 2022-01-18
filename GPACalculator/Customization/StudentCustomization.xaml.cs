@@ -30,14 +30,36 @@ namespace GPACalculator
             }
         }
 
-
         /// <summary>
         /// Constructs a new Student Customization Control for customizing a new or existing student's GPA. 
         /// </summary>
-        public StudentCustomization()
+        public StudentCustomization(Student student)
         {
             InitializeComponent();
+            if (student.SemestersTaken.Count > 0) LoadStudent(student);
         }
+        /// <summary>
+        /// Loads an existing student's customization page. 
+        /// </summary>
+        /// <param name="student">The existing student to upload.</param>
+        private void LoadStudent(Student student)
+        {
+            StudentNameTextBox.Text = student.FullName;
+            textGPADisplay.Text = student.GPA.ToString("0.0"); 
+            SemesterDisplay sd = SemesterDisplayBorder.Child as SemesterDisplay;
+            sd.Semesters.Clear(); 
+            sd.SemesterControls.Clear();
+            sd.SemesterStackPanel.Children.Clear(); 
+            foreach (Semester sem in student.SemestersTaken)
+            {
+                SemesterControl sc = new SemesterControl(sem);
+                sc.SemesterLabel.Text = sem.Name; 
+                sd.SemesterControls.Add(sc);
+                sd.SemesterStackPanel.Children.Add(sc);
+                sd.Semesters.Add(sem); 
+            }
+        }
+
         /// <summary>
         /// Completes the student, sending its new information to a database/text doc.
         /// Should implement some form of encryption method to safeguard information. 
@@ -50,10 +72,12 @@ namespace GPACalculator
             student.FullName = StudentNameTextBox.Text;
             CalculateGPA(sender, e);
             UpdateSemestersTaken();
+            SemesterDisplay sd = SemesterDisplayBorder.Child as SemesterDisplay;
+            sd.UpdateSemestersTaken(); 
 
             MainWindow main = TraverseTreeForMainWindow;
             main.Students.Add(student);
-
+            main.UpdateJSON(); 
             main.MainWindowBorder.Child = new StudentSelection(); 
         }
 

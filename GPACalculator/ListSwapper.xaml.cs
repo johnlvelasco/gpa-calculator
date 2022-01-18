@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Data;
 
 namespace GPACalculator
@@ -21,24 +11,10 @@ namespace GPACalculator
     /// </summary>
     public partial class ListSwapper : UserControl
     {
-        public ListSwapper()
-        {
-            InitializeComponent(); 
-        }
-
-        public void AddNewStudent(object sender, RoutedEventArgs e)
-        {
-            StudentCustomization studentCustomization = new StudentCustomization();
-            Student student = new Student();
-            studentCustomization.DataContext = student;
-            MainWindow main = TraverseTreeForMain;
-            main.MainWindowBorder.Child = studentCustomization; 
-
-        }
         /// <summary>
         /// Traverses the tree to find the MainWindow parent. 
         /// </summary>
-        private MainWindow TraverseTreeForMain
+        private MainWindow TraverseTreeForMainWindow
         {
             get
             {
@@ -50,7 +26,60 @@ namespace GPACalculator
                 return parent as MainWindow;
             }
         }
+        /// <summary>
+        /// Constructor for the list swapper control.
+        /// </summary>
+        public ListSwapper()
+        {
+            InitializeComponent();
+        }
+        /// <summary>
+        /// Loads the students provided by the datacontext.
+        /// Adding them to the ListBox as DisplayStudentControls.
+        /// </summary>
+        /// <param name="sender">LoadStudents button</param>
+        /// <param name="e">Event where the user clicks the button.</param>
+        public void LoadStudents(object sender, RoutedEventArgs e)
+        {            
+            List<Student> StoredStudents = DataContext as List<Student>;
+            if (DataContext == null || StoredStudents.Count == 0) return;
+            StudentDisplayStackPanel.Items.Clear(); 
+            foreach (Student student in StoredStudents)
+            {
+                DisplayStudentControl dsc = new DisplayStudentControl(student);
+                dsc.AddHandler(MouseDoubleClickEvent, new RoutedEventHandler(OnMouseDoubleClick)); 
+                StudentDisplayStackPanel.Items.Add(dsc); 
+            }
+        }
 
+        /// <summary>
+        /// Switches the screen to Student Customization to add a new student.
+        /// </summary>
+        /// <param name="sender">Add new student button</param>
+        /// <param name="e">Event where the user clicks the button.</param>
+        public void AddNewStudent(object sender, RoutedEventArgs e)
+        {            
+            Student student = new Student();
+            StudentCustomization studentCustomization = new StudentCustomization(student);
+            studentCustomization.DataContext = student;
+            MainWindow main = TraverseTreeForMainWindow;
+            main.MainWindowBorder.Child = studentCustomization; 
+        }
 
+        /// <summary>
+        /// Double click event that loads the selected student in the listbox. 
+        /// </summary>
+        /// <param name="sender">The selected DisplayStudentControl</param>
+        /// <param name="e">a double click.</param>
+        private void OnMouseDoubleClick(object sender, RoutedEventArgs e)
+        {
+            //load the student selected.
+            DisplayStudentControl dsc = sender as DisplayStudentControl;
+            Student studentToLoad = dsc.Student;
+            StudentCustomization studentCustomization = new StudentCustomization(studentToLoad);
+            studentCustomization.DataContext = studentToLoad;
+            MainWindow main = TraverseTreeForMainWindow;
+            main.MainWindowBorder.Child = studentCustomization; 
+        }
     }
 }

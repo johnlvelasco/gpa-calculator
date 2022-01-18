@@ -194,7 +194,6 @@ C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\zh-Hant\Mi
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\Data.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\bin\Debug\net5.0\Data.pdb
-C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\obj\Debug\net5.0\DataTests.csproj.AssemblyReference.cache
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\obj\Debug\net5.0\DataTests.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\obj\Debug\net5.0\DataTests.AssemblyInfoInputs.cache
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\obj\Debug\net5.0\DataTests.AssemblyInfo.cs
@@ -204,3 +203,4 @@ C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\obj\Debug\net5.0\DataTests.
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\obj\Debug\net5.0\ref\DataTests.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\obj\Debug\net5.0\DataTests.pdb
 C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\obj\Debug\net5.0\DataTests.genruntimeconfig.cache
+C:\Users\johnv\Source\Repos\gpa-calculator\DataTests\obj\Debug\net5.0\DataTests.csproj.AssemblyReference.cache

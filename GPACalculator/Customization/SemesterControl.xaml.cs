@@ -39,6 +39,15 @@ namespace GPACalculator
         public SemesterControl(Semester semester)
         {
             InitializeComponent();
+            if (semester.Courses.Count > 0)
+            {
+                foreach (Course course in semester.Courses)
+                {
+                    AddExistingCourse(course); 
+                }
+                
+                return;
+            }
             for(int i=0; i<4; i++)
             {
                 AddNewCourse();
@@ -55,21 +64,65 @@ namespace GPACalculator
         /// <summary>
         /// Button that handles when a user wants to add a new course to the semester. 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The AddNewCourse button</param>
+        /// <param name="e">Click event when a user selects the button.</param>
         public void AddCourse(object sender, RoutedEventArgs e)
         {
             AddNewCourse();
         }
 
         /// <summary>
-        /// Simplifies the Adding New Course button . 
+        /// Simplifies the Adding New Course button and adds a new blank course to the Courses list and the stackpanel. 
         /// </summary>
         private void AddNewCourse()
         {
-            Course c = new Course("", 0, Grade.A);
-            Courses.Add(c);
-            CoursesStackPanel.Children.Insert(CoursesStackPanel.Children.Count-1, new CourseControl(c));
+            Course course = new Course("", 0, Grade.A);
+            Courses.Add(course);
+            CoursesStackPanel.Children.Insert(CoursesStackPanel.Children.Count-1, new CourseControl(course));
+        }
+        /// <summary>
+        /// Adds an Existing course to the courses list and stackpanel. 
+        /// Used when loading a student. 
+        /// /// </summary>
+        private void AddExistingCourse(Course course)
+        {
+            Courses.Add(course);
+            CourseControl courseControl = new CourseControl(course); 
+            courseControl.courseNameText.Text = course.CourseName;
+
+            if (course.CreditHours == 0)
+            {
+                courseControl.courseCreditHoursText.Text = "";
+                courseControl.courseGradeComboBox.SelectedItem = -1; 
+            }
+            else
+            {
+                courseControl.courseCreditHoursText.Text = course.CreditHours.ToString();
+                //courseControl.courseGradeComboBox.SelectedValue = "A"; 
+                //courseControl.courseGradeComboBox.SelectedItem = GradeToString(course.LetterGrade);
+                courseControl.courseGradeComboBox.SelectedIndex = (int)course.LetterGrade; 
+            }
+
+            CoursesStackPanel.Children.Insert(CoursesStackPanel.Children.Count - 1, courseControl);
+        }
+
+        /// <summary>
+        /// Converts the grade into a string for the ComboBox to read.
+        /// </summary>
+        /// <param name="grade">The grade to convert.</param>
+        /// <returns>a string for the grade.</returns>
+        public string GradeToString(Grade grade)
+        {
+            if (grade == Grade.A)
+                return "A";
+            else if (grade == Grade.B)
+                return "B";
+            else if (grade == Grade.C)
+                return "C";
+            else if (grade == Grade.D)
+                return "D";
+            else
+                return "F";
         }
 
         /// <summary>
@@ -79,13 +132,13 @@ namespace GPACalculator
         /// <returns>true if the course is removed, false otherwise</returns>
         public bool RemoveCourse(Course courseToRemove)
         {
-            foreach (CourseControl cc in CoursesStackPanel.Children)
+            foreach (CourseControl courseControl in CoursesStackPanel.Children)
             {
-                if (cc.CourseName.Equals(courseToRemove.CourseName) &&
-                    cc.CourseCreditHours == courseToRemove.CreditHours &&
-                    cc.CourseGrade == courseToRemove.LetterGrade)
+                if (courseControl.CourseName.Equals(courseToRemove.CourseName) &&
+                    courseControl.CourseCreditHours == courseToRemove.CreditHours &&
+                    courseControl.CourseGrade == courseToRemove.LetterGrade)
                 { 
-                    CoursesStackPanel.Children.Remove(cc);
+                    CoursesStackPanel.Children.Remove(courseControl);
                     return true;
                 }
             }
@@ -115,17 +168,18 @@ namespace GPACalculator
         /// <param name="e">The Remove Semester Button</param>
         private void RemoveSemester(object sender, RoutedEventArgs e)
         {
-            SemesterDisplay sd = TraverseTreeForSemesterDisplay;
-            if (sd == null) throw new Exception("TraverseForSemesterDisplay was null in SemesterControl.cs");
+            SemesterDisplay semesterDisplay = TraverseTreeForSemesterDisplay;
+            if (semesterDisplay == null) throw new Exception("TraverseForSemesterDisplay was null in SemesterControl.cs");
 
             UpdateCourses(); 
-            foreach(UIElement element in sd.SemesterStackPanel.Children)
+            foreach(UIElement element in semesterDisplay.SemesterStackPanel.Children)
             {
-                SemesterControl sc = element as SemesterControl;
-                Semester sem = sc.GetSemester; 
+                SemesterControl semesterControl = element as SemesterControl;
+                semesterDisplay.SemesterControls.Remove(semesterControl); 
+                Semester sem = semesterControl.GetSemester; 
                 if (sem.Name.Equals(GetSemester.Name))
                 {
-                    sd.SemesterStackPanel.Children.Remove(element);
+                    semesterDisplay.SemesterStackPanel.Children.Remove(element);
                     break;
                 }
             }
@@ -138,7 +192,8 @@ namespace GPACalculator
         /// <param name="args">event args for a text changed event.</param>
         private void SemesterNameChangedEventHandler(object sender, TextChangedEventArgs args)
         {
-            GetSemester.Name = SemesterLabel.Text; 
+            if (GetSemester == null) return; 
+            GetSemester.Name = SemesterLabel.Text;
         }
     }
 }

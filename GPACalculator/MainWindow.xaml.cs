@@ -12,9 +12,13 @@ namespace GPACalculator
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Main window constructor, sets the datacontext for the project to be the list of students.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = Students;
             if (Students.Count == 0)
             {
                 //try reading thru the json. 
@@ -26,6 +30,9 @@ namespace GPACalculator
         /// </summary>
         public List<Student> Students = new List<Student>();
 
+        /// <summary>
+        /// The JSON string given when serializing the list of students. 
+        /// </summary>
         private string JsonString; 
 
         /// <summary>
@@ -33,7 +40,7 @@ namespace GPACalculator
         /// </summary>
         public void UpdateJSON()
         {
-            JsonString = JsonConvert.SerializeObject(Students);
+            JsonString = JsonConvert.SerializeObject(Students, Formatting.Indented);
             File.WriteAllText(@"C:\Users\johnv\source\repos\gpa-calculator\student-database", JsonString);
         }
         /// <summary>
@@ -43,13 +50,5 @@ namespace GPACalculator
         {
             Students = JsonConvert.DeserializeObject<List<Student>>(JsonString); 
         }
-
-        //Serialization & Deserialization for a single Student. 
-        /*
-        string jsonString = JsonConvert.SerializeObject(student);
-        File.WriteAllText(@"C:\Users\johnv\source\repos\gpa-calculator\student-database", jsonString);
-
-            Student deserialStudent = JsonConvert.DeserializeObject<Student>(jsonString);
-        */
     }
 }

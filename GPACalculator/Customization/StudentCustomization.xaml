@@ -19,8 +19,6 @@
                 <Setter Property="TextAlignment" Value="Center"/>
             </Style>
         </Grid.Resources>
-        
-        
         <Border x:Name="SemesterDisplayBorder" Grid.Column="0" Padding="25">
             <local:SemesterDisplay/>
         </Border>

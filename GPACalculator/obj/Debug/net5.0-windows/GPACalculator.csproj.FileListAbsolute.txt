@@ -81,6 +81,7 @@ C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\bin\Debug\net5.0-window
 C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\bin\Debug\net5.0-windows\GPACalculator.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\bin\Debug\net5.0-windows\ref\GPACalculator.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\bin\Debug\net5.0-windows\GPACalculator.pdb
+C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\bin\Debug\net5.0-windows\Data.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\bin\Debug\net5.0-windows\Data.pdb
 C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\GPACalculator.csproj.AssemblyReference.cache
@@ -114,4 +115,3 @@ C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\obj\Debug\net5.0-window
 C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\ref\GPACalculator.dll
 C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\GPACalculator.pdb
 C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\obj\Debug\net5.0-windows\GPACalculator.genruntimeconfig.cache
-C:\Users\johnv\Source\Repos\gpa-calculator\GPACalculator\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
